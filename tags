@@ -9,29 +9,68 @@
 !_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
 !_TAG_PROGRAM_URL	https://ctags.io/	/official site/
 !_TAG_PROGRAM_VERSION	5.9.0	//
-Color	event.go	/^	Color uint32$/;"	m	struct:main.Event	typeref:typename:uint32
-Date	event.go	/^	Date time.Time$/;"	m	struct:main.Event	typeref:typename:time.Time
-Desc	event.go	/^	Desc string$/;"	m	struct:main.Event	typeref:typename:string
+.	scripts/ticktick.sh	/^  .() {$/;"	f
+/auth	API.md	/^### \/auth$/;"	S	section:API""Endpoints
+/events/add/{user_id}	API.md	/^### \/events\/add\/{user_id}$/;"	S	section:API""Endpoints
+/events/get/{user_id}/all	API.md	/^### \/events\/get\/{user_id}\/all$/;"	S	section:API""Endpoints
+/events/get/{user_id}/{event_id}	API.md	/^### \/events\/get\/{user_id}\/{event_id}$/;"	S	section:API""Endpoints
+/events/rm/{user_id}/{event_id}	API.md	/^### \/events\/rm\/{user_id}\/{event_id}$/;"	S	section:API""Endpoints
+/events/set/{user_id}/{event_id}	API.md	/^### \/events\/set\/{user_id}\/{event_id}$/;"	S	section:API""Endpoints
+API	API.md	/^# API$/;"	c
+Color	event.go	/^	Color null.Int$/;"	m	struct:main.Event	typeref:typename:null.Int
+Data	API.md	/^#### Data$/;"	t	subsection:API""Endpoints""/auth
+Data	API.md	/^#### Data$/;"	t	subsection:API""Endpoints""/events/add/{user_id}
+Data	API.md	/^#### Data$/;"	t	subsection:API""Endpoints""/events/get/{user_id}/all
+Data	API.md	/^#### Data$/;"	t	subsection:API""Endpoints""/events/get/{user_id}/{event_id}
+Data	API.md	/^#### Data$/;"	t	subsection:API""Endpoints""/events/rm/{user_id}/{event_id}
+Data	API.md	/^#### Data$/;"	t	subsection:API""Endpoints""/events/set/{user_id}/{event_id}
+Date	event.go	/^	Date time.Time $/;"	m	struct:main.Event	typeref:typename:time.Time
+Desc	event.go	/^	Desc null.String $/;"	m	struct:main.Event	typeref:typename:null.String
+DoesNotExistError	http.go	/^var DoesNotExistError = errors.New("httpServer: requested element does NOT exist")$/;"	v	package:main
+ENDHELP	scripts/ticktick.sh	/^        cat 1>&2 <<-"ENDHELP"$/;"	h
+Endpoints	API.md	/^## Endpoints$/;"	s	chapter:API
 Environ	main.go	/^type Environ struct {$/;"	s	package:main
 Event	event.go	/^type Event struct {$/;"	s	package:main
 Event	user.go	/^	Event []Event$/;"	m	struct:main.User	typeref:typename:[]Event
+Format	API.md	/^## Format$/;"	s	chapter:API
 HttpInitServer	http.go	/^func HttpInitServer(db *gorm.DB, port string) (*HttpServer) {$/;"	f	package:main	typeref:typename:(*HttpServer)
 HttpListen	http.go	/^func (self *HttpServer) HttpListen() error {$/;"	f	struct:main.HttpServer	typeref:typename:error
 HttpServer	http.go	/^type HttpServer struct {$/;"	s	package:main
-ID	event.go	/^	ID uint$/;"	m	struct:main.Event	typeref:typename:uint
 Json	json.go	/^type Json interface {$/;"	i	package:main
 Model	event.go	/^	gorm.Model$/;"	M	struct:main.Event	typeref:typename:gorm.Model
 Model	user.go	/^	gorm.Model$/;"	M	struct:main.User	typeref:typename:gorm.Model
 Name	event.go	/^	Name string$/;"	m	struct:main.Event	typeref:typename:string
 Name	user.go	/^	Name string `json:"name"`$/;"	m	struct:main.User	typeref:typename:string
+Ok	http.go	/^	Ok bool `json:"ok"`$/;"	m	struct:main.okS	typeref:typename:bool
 Port	main.go	/^	Port         string;$/;"	m	struct:main.Environ	typeref:typename:string
 PostgresUrl	main.go	/^	PostgresUrl  string;$/;"	m	struct:main.Environ	typeref:typename:string
-RGBToColor	event.go	/^func (e *Event)RGBToColor(r uint8, g uint8, b uint8) {$/;"	f	struct:main.Event
 User	user.go	/^type User struct {$/;"	s	package:main
-UserID	event.go	/^	UserID uint$/;"	m	struct:main.Event	typeref:typename:uint
+UserID	event.go	/^	UserID uint $/;"	m	struct:main.Event	typeref:typename:uint
+__tick_error	scripts/ticktick.sh	/^__tick_error() {$/;"	f
+__tick_fun_parse	scripts/ticktick.sh	/^__tick_fun_parse() {$/;"	f
+__tick_fun_parse_expression	scripts/ticktick.sh	/^__tick_fun_parse_expression() {$/;"	f
+__tick_fun_parse_tickcount_reset	scripts/ticktick.sh	/^__tick_fun_parse_tickcount_reset() {$/;"	f
+__tick_fun_tokenize	scripts/ticktick.sh	/^__tick_fun_tokenize() {$/;"	f
+__tick_fun_tokenize_expression	scripts/ticktick.sh	/^__tick_fun_tokenize_expression() {$/;"	f
+__tick_json_parse	scripts/ticktick.sh	/^__tick_json_parse() {$/;"	f
+__tick_json_parse_array	scripts/ticktick.sh	/^__tick_json_parse_array() {$/;"	f
+__tick_json_parse_object	scripts/ticktick.sh	/^__tick_json_parse_object() {$/;"	f
+__tick_json_parse_value	scripts/ticktick.sh	/^__tick_json_parse_value() {$/;"	f
+__tick_json_sanitize_value	scripts/ticktick.sh	/^__tick_json_sanitize_value() {$/;"	f
+__tick_json_tokenize	scripts/ticktick.sh	/^__tick_json_tokenize() {$/;"	f
+__tick_runtime_first	scripts/ticktick.sh	/^  __tick_runtime_first() { echo ${!1}; }$/;"	f
+__tick_runtime_last	scripts/ticktick.sh	/^  __tick_runtime_last() { eval 'echo $'${!#}; }$/;"	f
+__tick_runtime_length	scripts/ticktick.sh	/^  __tick_runtime_length() { echo $#; }$/;"	f
+__tick_runtime_pop	scripts/ticktick.sh	/^  __tick_runtime_pop() { eval unset ${!#}; }$/;"	f
+__tick_runtime_push	scripts/ticktick.sh	/^  __tick_runtime_push() {$/;"	f
+__tick_runtime_shift	scripts/ticktick.sh	/^  __tick_runtime_shift() {$/;"	f
+addEventToUser	http.go	/^func (s *HttpServer) addEventToUser(w http.ResponseWriter, r *http.Request) {$/;"	f	struct:main.HttpServer
 authHandler	http.go	/^func (s *HttpServer) authHandler(w http.ResponseWriter, r *http.Request) {$/;"	f	struct:main.HttpServer
 db	http.go	/^	db *gorm.DB;$/;"	m	struct:main.HttpServer	typeref:typename:*gorm.DB
+getAllEventsUser	http.go	/^func (s *HttpServer) getAllEventsUser(w http.ResponseWriter, r *http.Request) {$/;"	f	struct:main.HttpServer
+getEventByIDUser	http.go	/^func (s *HttpServer) getEventByIDUser(w http.ResponseWriter, r *http.Request) {$/;"	f	struct:main.HttpServer
 httpOkHandler	http.go	/^func httpOkHandler(w http.ResponseWriter, r *http.Request) {$/;"	f	package:main
+in	scripts/ticktick.sh	/^            case $function in$/;"	f
 main	event.go	/^package main;$/;"	p
 main	http.go	/^package main;$/;"	p
 main	json.go	/^package main;$/;"	p
@@ -39,7 +78,12 @@ main	main.go	/^func main() {$/;"	f	package:main
 main	main.go	/^package main;$/;"	p
 main	user.go	/^package main;$/;"	p
 mux	http.go	/^	mux *mux.Router$/;"	m	struct:main.HttpServer	typeref:typename:*mux.Router
-ok	http.go	/^	ok bool `json:"ok"`$/;"	m	struct:main.okS	typeref:typename:bool
 okS	http.go	/^type okS struct {$/;"	s	package:main
+removeEventByIDUser	http.go	/^func (s *HttpServer) removeEventByIDUser(w http.ResponseWriter, r *http.Request) {$/;"	f	struct:main.HttpServer
 retry_timeout	main.go	/^const retry_timeout time.Duration = 1000000000 * 5;$/;"	c	package:main	typeref:typename:time.Duration
 s	http.go	/^	s *http.Server;$/;"	m	struct:main.HttpServer	typeref:typename:*http.Server
+setEventByIDUser	http.go	/^func (s *HttpServer) setEventByIDUser(w http.ResponseWriter, r *http.Request) {$/;"	f	struct:main.HttpServer
+source	scripts/ticktick.sh	/^  source() {$/;"	f
+tickParse	scripts/ticktick.sh	/^  tickParse() {$/;"	f
+tickReset	scripts/ticktick.sh	/^  tickReset() {$/;"	f
+tickVars	scripts/ticktick.sh	/^  tickVars() {$/;"	f
