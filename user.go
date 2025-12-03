@@ -5,6 +5,6 @@ import (
 
 type User struct {
 	gorm.Model
-	Name string `json:"name"`
+	Name string 
 	Event []Event
 }
