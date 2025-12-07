@@ -254,6 +254,78 @@ func (s *HttpServer) getEventByIDUser(w http.ResponseWriter, r *http.Request) {
 	w.Write(rets)
 }
 
+func (s *HttpServer) getEventByDateReqAndIDUser(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+    if r.Method == http.MethodOptions {
+        return
+    }
+	
+	es := []Event{}
+	vars := mux.Vars(r)
+	
+	user_id, ok := vars["user_id"]
+	if !ok {
+		http.Error(w, "Missing User ID param", http.StatusBadRequest)
+		return
+	}
+	from, ok := vars["from"]
+	if !ok {
+		http.Error(w, "Missing FROM param", http.StatusBadRequest)
+		return
+	}
+	until, ok := vars["until"]
+	if !ok {
+		http.Error(w, "Missing UNTIL param", http.StatusBadRequest)
+		return
+	}
+
+	fromd, err := time.Parse("UTC", from);
+	if err != nil {
+		http.Error(w, "Invalid date", http.StatusBadRequest);
+		return
+	}
+	untild, err := time.Parse("UTC", until);
+	if err != nil {
+		http.Error(w, "Invalid date", http.StatusBadRequest);
+		return
+	}
+
+	var count int64
+	err = s.db.Session(&gorm.Session{}).Transaction(func(tx *gorm.DB) error {
+		res := tx.Model(&User{}).Where("id = ?", user_id).Count(&count)
+		if res.Error != nil {
+			return res.Error
+		}
+		if count == 0 {
+			return DoesNotExistError
+		}
+		
+		res = tx.Model(&Event{}).Where("user_id = ?", user_id).
+		Where("date > ?", fromd).
+		Where("date < ?", untild).
+		Find(&es)
+
+		if res.Error != nil {
+			return res.Error;
+		}
+
+		return nil
+	})
+	if err != nil {
+		log.Printf("GORM Transaction Failure: %v", err);
+		http.Error(w, "GORM Transaction failure", http.StatusBadRequest)
+		return
+	}
+	
+	rets, err := json.Marshal(es)
+	if err != nil {
+		log.Printf("JSON Marshaling error: %v", err);
+		http.Error(w, "JSON Marshaling error", http.StatusInternalServerError);
+	}
+	w.Write(rets)
+
+}
+
 func (s *HttpServer) setEventByIDUser(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Headers", "*")
@@ -379,6 +451,7 @@ func HttpInitServer(db *gorm.DB, port string) (*HttpServer) {
 	h.mux.HandleFunc("/events/add/{user_id}", h.addEventToUser).Methods("POST", "OPTIONS")
 	h.mux.HandleFunc("/events/get/{user_id}/all", h.getAllEventsUser).Methods("POST", "OPTIONS")
 	h.mux.HandleFunc("/events/get/{user_id}/{event_id}", h.getEventByIDUser).Methods("POST", "OPTIONS")
+	h.mux.HandleFunc("/events/get/{user_id}/from/{from}/until/{until}", h.getEventByDateReqAndIDUser).Methods("POST", "OPTIONS")
 	h.mux.HandleFunc("/events/set/{user_id}/{event_id}", h.setEventByIDUser).Methods("POST", "OPTIONS")
 	h.mux.HandleFunc("/events/rm/{user_id}/{event_id}", h.removeEventByIDUser).Methods("POST", "OPTIONS")
 	h.mux.Use(mux.CORSMethodMiddleware(h.mux))

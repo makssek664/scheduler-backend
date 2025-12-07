@@ -1,6 +1,7 @@
 # API
 ## Format
 The data format is JSON.
+All endpoints use the POST HTTP method.
 
 ## Endpoints
 ### /auth
@@ -48,7 +49,19 @@ Get event of `{event_id}` related to user of `{user_id}`
     * Description - description of the event
     * Color - color of the event
     * Date - date of the event
-    * ORM data. 
+    * ORM data.
+### /events/get/{user_id}/from/{from}/until/{until}
+Get events relating to `{user_id}`, from date `{from}` until date `{until}`
+#### Data
+* Returns:
+    * ID - unique id of the event.
+    * UserID - user id tied to the event.
+    * Name - name of the event
+    * Description - description of the event
+    * Color - color of the event
+    * Date - date of the event
+    * ORM data.
+
 ### /events/set/{user_id}/{event_id}
 Set event of `{event_id}` related to user of `{user_id}`
 If a data member is null or, skippable, it is ignored.
